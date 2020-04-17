@@ -1,19 +1,47 @@
 <template>
   <div id="app">
     <img alt="Vue logo" src="./assets/logo.png">
-    <HelloWorld msg="Welcome to Your Vue.js App"/>
+    <Step v-bind:step="this.currentStep"/>
   </div>
 </template>
 
 <script>
-import HelloWorld from './components/HelloWorld.vue'
+import Step from './components/Step.vue'
 
 export default {
   name: 'App',
   components: {
-    HelloWorld
+    Step
+  },
+  data() {
+    return {
+      currentStep: {},
+      anonima: [ true, false, true],
+      unipersonal: [ true, false, true],
+      steps: [
+        {
+          id: 0,
+          question: 'Más de 50.000'
+        },
+        {
+          id: 1,
+          question: 'Nacionalidad española'
+        },
+        {
+          id: 2,
+          question: 'Más de 100 trabajadores'
+        }
+      ]
+    }
+  },
+  methods: {
+  },
+  created() {
+    this.currentStep = this.steps[0];
+    console.log(this.steps);
   }
 }
+
 </script>
 
 <style>
